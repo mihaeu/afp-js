@@ -5,22 +5,24 @@ const fs = require('fs');
 
 fs.readdir('./code-samples/src', (err, files) => {
 
-  var code = "";
+  // fetch all the code
+  var code = "", codeSamples = [], currentSample = "", spaces = 0;
   files.forEach(file => code += fs.readFileSync('./code-samples/src/' + file, 'utf8'));
 
-  var i, lines, codeSamples = [], currentSample = "", spaces = 0;
-  for (i = 0, lines = code.split("\n"); i < lines.length; i++) {
-    if (lines[i].match(/.*\/\/ @sample start: .+/) !== null) {
-      currentSample = lines[i].replace(/.*\/\/ @sample start: (.+)/, '$1');
-      spaces = lines[i].replace(/(.*)\/\/ @sample start: .+/, '$1').length;
+  // extract code samples
+  code.split("\n").forEach(line => {
+    if (line.match(/.*\/\/ @sample start: .+/) !== null) {
+      currentSample = line.replace(/.*\/\/ @sample start: (.+)/, '$1');
+      spaces = line.replace(/(.*)\/\/ @sample start: .+/, '$1').length;
       codeSamples[currentSample] = '';
-    } else if (lines[i].match(/.*\/\/ @sample end: .+/) !== null) {
+    } else if (line.match(/.*\/\/ @sample end: .+/) !== null) {
       currentSample = "";
     } else if (currentSample !== "") {
-      codeSamples[currentSample] += lines[i].slice(spaces) + "\n";
+      codeSamples[currentSample] += line.slice(spaces) + "\n";
     }
-  }
+  });
 
+  // replace code samples in the template
   var presentation = fs.readFileSync('template.html', 'utf8')
     .split("\n")
     .map(line => line.replace(/\/\/ @sample: (\S+)/, (string, match) => {
@@ -28,6 +30,7 @@ fs.readdir('./code-samples/src', (err, files) => {
         throw new Error('There\'s no code sample that matches ' + string);
       }
       return codeSamples[match];
-  })).join("\n");
+    })
+  ).join("\n");
   process.stdout.write(presentation);
 });
