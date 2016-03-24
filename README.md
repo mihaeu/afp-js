@@ -17,3 +17,5 @@ bin/replace-code-samples > index.html
 # starts local grunt server for development
 npm start
 ```
+
+**Änderungen sollten nur an der `template.html` vorgenommen werden, da die `index.html` immer wieder überschrieben wird.**

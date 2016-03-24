@@ -8,16 +8,16 @@ fs.readdir('./code-samples/src', (err, files) => {
   var code = "";
   files.forEach(file => code += fs.readFileSync('./code-samples/src/' + file, 'utf8'));
 
-  var i, lines, codeSamples = [], currentSample = "";
+  var i, lines, codeSamples = [], currentSample = "", spaces = 0;
   for (i = 0, lines = code.split("\n"); i < lines.length; i++) {
-    var currentLine = lines[i];
-    if (currentLine.match(/.*\/\/ @sample start: .+/) !== null) {
-      currentSample = currentLine.replace(/.*\/\/ @sample start: (.+)/, '$1');
+    if (lines[i].match(/.*\/\/ @sample start: .+/) !== null) {
+      currentSample = lines[i].replace(/.*\/\/ @sample start: (.+)/, '$1');
+      spaces = lines[i].replace(/(.*)\/\/ @sample start: .+/, '$1').length;
       codeSamples[currentSample] = '';
-    } else if (currentLine.match(/.*\/\/ @sample end: .+/) !== null) {
+    } else if (lines[i].match(/.*\/\/ @sample end: .+/) !== null) {
       currentSample = "";
     } else if (currentSample !== "") {
-      codeSamples[currentSample] += currentLine + "\n";
+      codeSamples[currentSample] += lines[i].slice(spaces) + "\n";
     }
   }
 
