@@ -4,3 +4,16 @@
 
 Präsentation ist erstmal mit reveal.js umgesetzt worden: http://mihaeu.github.io/afp-js
 (die live Präsentation ist auf dem `gh-pages` Branch)
+
+## Getting started
+
+```
+npm install
+npm test
+
+# inserts code samples into template
+bin/replace-code-samples > index.html
+
+# starts local grunt server for development
+npm start
+```
