@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+
+fs.readdir('./code-samples/src', (err, files) => {
+
+  var code = "";
+  files.forEach(file => code += fs.readFileSync('./code-samples/src/' + file, 'utf8'));
+
+  var i, lines, codeSamples = [], currentSample = "";
+  for (i = 0, lines = code.split("\n"); i < lines.length; i++) {
+    var currentLine = lines[i];
+    if (currentLine.match(/.*\/\/ @sample start: .+/) !== null) {
+      currentSample = currentLine.replace(/.*\/\/ @sample start: (.+)/, '$1');
+      codeSamples[currentSample] = '';
+    } else if (currentLine.match(/.*\/\/ @sample end: .+/) !== null) {
+      currentSample = "";
+    } else if (currentSample !== "") {
+      codeSamples[currentSample] += currentLine + "\n";
+    }
+  }
+
+  var presentation = fs.readFileSync('template.html', 'utf8')
+    .split("\n")
+    .map(line => line.replace(/\/\/ @sample: (\S+)/, (string, match) => {
+      if (codeSamples[match] == undefined) {
+        throw new Error('There\'s no code sample that matches ' + string);
+      }
+      return codeSamples[match];
+  })).join("\n");
+  process.stdout.write(presentation);
+});
