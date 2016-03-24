@@ -1,5 +1,7 @@
 # Geschichte, Herkunft, Grundlagen der Sprache (10 min)
 
+[![Join the chat at https://gitter.im/mihaeu/afp-js](https://badges.gitter.im/mihaeu/afp-js.svg)](https://gitter.im/mihaeu/afp-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
  - Warum ist JS relevant?
  - Geschichte & Herkunft: Web
  - EcmaScript6 Node Standard, ganz kurz: Coffeescript oder TypeScript
