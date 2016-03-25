@@ -112,10 +112,18 @@ module.exports = function(grunt) {
 			]
 		},
 
+    exec: {
+      compileTemplate: 'bin/replace-code-samples > index.html'
+    },
+
 		watch: {
 			options: {
 				livereload: true
 			},
+      exec: {
+        files: ['template.html'],
+        tasks: 'exec'
+      },
 			js: {
 				files: [ 'Gruntfile.js', 'js/reveal.js' ],
 				tasks: 'js'
@@ -148,6 +156,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 	grunt.loadNpmTasks( 'grunt-autoprefixer' );
 	grunt.loadNpmTasks( 'grunt-zip' );
+	grunt.loadNpmTasks( 'grunt-exec' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
