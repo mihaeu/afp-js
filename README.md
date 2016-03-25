@@ -9,10 +9,6 @@ Präsentation ist erstmal mit reveal.js umgesetzt worden: http://mihaeu.github.i
 
 ```
 npm install
-npm test
-
-# inserts code samples into template
-bin/replace-code-samples > index.html
 
 # starts local grunt server for development
 npm start
