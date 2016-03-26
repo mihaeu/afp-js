@@ -113,7 +113,8 @@ module.exports = function(grunt) {
 		},
 
     exec: {
-      compileTemplate: 'bin/replace-code-samples > index.html'
+      compileTemplate: 'bin/replace-code-samples > index.html',
+      test: 'npm test'
     },
 
 		watch: {
@@ -121,7 +122,7 @@ module.exports = function(grunt) {
 				livereload: true
 			},
       exec: {
-        files: ['template.html'],
+        files: ['template.html', 'code-samples/**/*.js'],
         tasks: 'exec'
       },
 			js: {
@@ -162,7 +163,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
 	// JS task
-	grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
+	grunt.registerTask( 'js', [ 'jshint', 'uglify'] );
 
 	// Theme CSS
 	grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
