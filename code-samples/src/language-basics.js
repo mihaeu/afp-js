@@ -1,7 +1,7 @@
 module.exports = {
-  countSheep: () => {
+  countSheep() {
     // @sample start: language-basics
-    var schlafEin = function(anzahlSchafe) {
+    var schlafEin = (anzahlSchafe) => {
       var i = 0, ausgabe = [];
       for (i = anzahlSchafe; i > 0; --i) {
         if (i === 1) {
@@ -17,7 +17,7 @@ module.exports = {
     return schlafEin(5);
   },
 
-  functionalScoping: () => {
+  functionalScoping() {
     'use strict';
     // @sample start: functional-scoping
     var x = 3;
