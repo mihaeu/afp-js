@@ -68,78 +68,354 @@
  - Beispiele
 
 </script></section>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Geschichte & Herkunft
+<section>
+    <h2>Geschichte & Herkunft</h2>
 
-> [...] you have the power to define your own subset. You can write better programs by
-> relying exclusively on the good parts
-> > Douglas Crockford, JavaScript - The Good Parts
-</script></section>
+    <br>
+    <p class="fragment">Wer hat bereits Erfahrungen mit JavaScript gemacht?</p>
+    <br>
+    <p class="fragment">Wem macht das Spass?</p>
+    <br>
+    <p class="fragment">Wer meint JavaScript ist eine "schöne" Sprache?</p>
+</section>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Geschichte & Herkunft
+<section>
+    <h2>Geschichte & Herkunft</h2>
 
- - 1995 von Netscape entwickelt (in 10 Tagen) für deren Browser
- - verschiedene Implementierungen u.a. von Microsoft (JScript)
- - Sprachstandard erst später entstanden (ECMAScript)
- - aktueller Standard ES6 der von den meisten modernen Browsern zum Teil implementiert wird
- - viele Cross-Compiler und Super-Sets (GWT, TypeScript, Dart, Coffeescript, ...)
-</script></section>
+    <blockquote>
+        [...] you have the power to define your own subset. You can write better programs by relying exclusively on the good parts.
+        <small>- Douglas Crockford, JavaScript - The Good Parts</small>
+    </blockquote>
+</section>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Geschichte & Herkunft
+<section>
+    <section>
+        <h2>Geschichte & Herkunft</h2>
 
- - Keine (ernsthaften) Alternativen
- - früher außschließlich im Frontend, jetzt überall (Backend, Desktop- und Mobileapps)
- - unere Meinung: sehr viel Hype, aber auch echte Chancen
-</script></section>
+        <ul>
+            <li>1995 von Netscape entwickelt (in 10 Tagen) für deren Browser</li>
+            <li class="fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
+            <li class="fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
+            <li class="fragment">aktueller Standard ES6 der von den meisten modernen Browsern zum Teil implementiert wird</li>
+            <li class="fragment">viele Cross-Compiler und Super-Sets (GWT, TypeScript, Dart, Coffeescript, ...)</li>
+        </ul>
+
+        <p>
+            <small>(es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
+        </p>
+    </section>
+    <section>
+        <img src="http://www.gwtproject.org/assets/build/img/navLogoBig.png" alt="">
+        <pre><code data-trim class="java">
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Window;
+
+public class HelloWorld implements EntryPoint {
+    public void onModuleLoad() {
+        Window.alert("Hello, World!");
+    }
+}
+        </code></pre>
+    </section>
+    <section>
+        <img src="http://coffeescript.org/documentation/images/logo.png" alt="">
+        <p>Python + Ruby + Haskell = ♥</p>
+        <pre><code data-trim class="coffeescript">
+# Conditions:
+number = -42 if opposite
+
+# Functions:
+square = (x) -> x * x
+
+# Splats:
+race = (winner, runners...) ->
+print winner, runners
+
+# Array comprehensions:
+cubes = (math.cube num for num in list)
+        </code></pre>
+    </section>
+    <section>
+        <h2>TypeScript</h2>
+        <pre><code data-trim class="typescript">
+class Greeter {
+    constructor(public greeting: string) { }
+
+    greet() {
+        return "<h1>" + this.greeting + "</h1>";
+    }
+};
+
+var greeter = new Greeter("Hello, world!");
+
+document.body.innerHTML = greeter.greet();
+        </code></pre>
+    </section>
+</section>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Geschichte, Herkunft, Grundlagen der Sprache (10 min)
+<section>
+    <h2>Geschichte & Herkunft</h2>
 
- - Warum ist JS relevant?
-   - JavaScript ist inzwischen überall
-   - in NodeJS ist fast alles asynchron, Funktionen definieren was mit dem Ergebnis gemacht werden soll
- - Geschichte & Herkunft
-   - früher: Web Frontend
-   - jetzt: hauptsächlich immer noch Web, aber auch Backend und ebenso Desktop und Mobile Anwendungen
- - wir behandeln hier EcmaScript6 da Standard für Node Releases (alte Browser teils nur ES5, aber polyfills)
- 	- ganz kurz: Coffeescript oder TypeScript
- - Spracheigenschaften
+    <ul>
+        <li>Keine (ernsthaften) Alternativen</li>
+        <li class="fragment">früher außschließlich im Frontend, jetzt überall (Backend, Desktop- und Mobileapps)</li>
+        <li class="fragment">unere Meinung: sehr viel Hype, aber auch echte Chancen</li>
+    </ul>
 
-Note:
- - die einzige Sprache die auf jedem eurer Geräte von Anfang an interpretiert werden kann
+    <aside class="notes">
+     - die einzige Sprache die auf jedem eurer Geräte von Anfang an interpretiert werden kann
+    </aside>
 
-</script></section>
+</section>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Funktionale Konzepte, Syntax, „eingebaute“ Datenstrukturen (10-15 min)
+<section>
+    <h2>Sprachgrundlagen & Eigenschaften</h2>
+    <pre><code data-trim class="js">
+var schlafEin = function(anzahlSchafe) {
+  var i = 0, ausgabe = [];
+  for (i = anzahlSchafe; i > 0; --i) {
+    if (i === 1) {
+      ausgabe.push(1 + ' Schaf');
+    } else {
+      ausgabe.push(i + ' Schafe');
+    }
+  }
+  return ausgabe.join("\n") + "\nZzzz ...";
+};
+schlafEin(5);
 
- - Datenstrukturen: assoc array
- - eingebaute funktionale Konzepte: filter, reduce, map (aber oft untypische Implementierungen)
- - vieles via Libraries oder Eigenbau
+    </code></pre>
+</section>
 
-</script></section>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-#### Höhere Funktionen in JavaScript: filter()
+<section>
+    <h2>Sprachgrundlagen & Eigenschaften</h2>
+    <h3>Datenstrukturen</h3>
+    <pre><code data-trim class="js">
+// boolean
+true
+false
 
-Welcher Ansatz ist einfacher zu verstehen und hat weniger mögliche Fehlerquellen?
+// number
+1
+3.1415
 
-```js
+// string
+'Hello'
+
+// regex (eigentl. object)
+/java[sS]cript/
+    </code></pre>
+</section>
+
+<section>
+    <h2>Sprachgrundlagen & Eigenschaften</h2>
+    <h3>Datenstrukturen</h3>
+    <pre><code data-trim class="js">
+// assoziatives Array (functioncal scope)
+var arr = [1, 2, 3];
+
+// Objekte ähnlich wie JSON (global scope)
+obj = {
+    bezeichner: 'wert'
+}
+
+// seit ES6: Map und Set
+// immutable Map (block scope)
+const map = new Map([[ 1, 'one' ]]);
+
+// Set (block scope)
+let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
+    </code></pre>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Sprachgrundlagen & Eigenschaften</h2>
+        <ul>
+            <li>Interpretiert</li>
+            <li class="fragment">Dynamische Typisierung</li>
+            <li class="fragment">Coercion</li>
+            <li class="fragment">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
+            <li class="fragment">Prototyp orientiert</li>
+        </ul>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Dynamische Typisierung</h2>
+        ⚡ Typ ist zur Compilezeit noch nicht bekannt ⚡
+        <pre><code data-trim class="js">
+let x;        // undefined
+x = 1;        // number
+x = true;     // boolean
+x = 'true';   // string
+        </code></pre>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Coercion</h2>
+        <pre><code data-trim data-noescape class="js">
+0 == ''           <span class="fragment">// true</span>
+
+<span class="fragment">0 == '0'</span>          <span class="fragment">// true</span>
+
+<span class="fragment">'' == '0'</span>         <span class="fragment">// false</span>
+
+
+<span class="fragment">false == 'false'</span>  <span class="fragment">// false</span>
+
+<span class="fragment">false == '0'</span>      <span class="fragment">// true</span>
+
+<span class="fragment">" \t\r\n " == 0</span>   <span class="fragment">// true</span>
+        </code></pre>
+        <p class="fragment">⚡ Typumwandlungen z.B. bei == != + ... ⚡</p>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Lexikalisches Scoping auf Funktionsebene</h2>
+        <pre><code data-trim data-noescape class="js">
+var x = 3;
+function func(randomize) {
+    var x;                  <span class="fragment">// geht nur da functional scope</span>
+    if (randomize) {        <span class="fragment">// bei let error</span>
+        let x = Math.random();
+        return x;
+    }
+    return x;
+}
+func(false);                <span class="fragment">// undefined</span>
+        </code></pre>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Prototyp orientiert</h2>
+        <ul>
+            <li>Keine Klassen, Methoden, Konstruktoren, Module (zumindest vor ES6)</li>
+            <li>Aber alles über Prototypen möglich</li>
+        </ul>
+        <pre><code data-trim data-noescape class="js">
+var Animal = (function() {
+    function Animal(name) {
+        this.name = name;
+    }
+
+    Animal.prototype.move = function(meters) {
+        return this.name + " moved " + meters + "m.";
+    };
+
+    return Animal;
+})();
+        </code></pre>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Prototyp orientiert</h2>
+        Inheritance :(
+        <pre><code data-trim data-noescape class="js">
+function Snake(name, isPoisonous) {
+    Animal.call(this, name); // super(name)
+    this.isPoisonous = isPoisonous;
+}
+
+Snake.prototype = Object.create(Person.prototype);
+Snake.prototype.constructor = Snake;
+Snake.prototype.move = function () {
+    return this.name + " wiggles " + meters + "m.";
+};
+        </code></pre>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Prototyp orientiert</h2>
+        <h3>(under the hood)</h3>
+        <ul>
+            Seit ES6 viel syntaktischer Zucker:
+        </ul>
+        <pre><code data-trim data-noescape class="js">
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    move() {
+        return return this.name + " moved " + meters + "m.";
+    }
+}
+
+class Snake extends Animal {
+    // ...
+}
+        </code></pre>
+    </section>
+
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Funktionale Konzepte</h2>
+
+        <ul>
+            <li>Funktionen waren schon immer ein first-class-citizen</li>
+            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber oft untypische Implementierungen)</li>
+            <li class="fragment">seit ES6 Tail Recursion!</li>
+        </ul>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h4>Höhere Funktionen in JavaScript: filter()</h4>
+
+        Welcher Ansatz ist einfacher zu verstehen und hat weniger mögliche Fehlerquellen?
+
+        <pre><code data-trim class="js">
 // imperative
 data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (var i = 0, result = []; i < data.length; i++) {
@@ -153,18 +429,19 @@ return result;
 // functional
 return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter(i => i % 2 === 0);
 
-```
-</script></section>
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
+        </code></pre>
+    </section>
 
-#### Höhere Funktionen in JavaScript: map()
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
 
-Was mache ich, wenn ich eine ähnliche Funktion wie z.B. die Quadratwurzel brauche?
+        <h4>Höhere Funktionen in JavaScript: map()</h4>
 
-```js
+        Was mache ich, wenn ich eine ähnliche Funktion wie z.B. die Quadratwurzel brauche?
+
+        <pre><code data-trim class="js">
 // imperative
 data = [0, 1, 2, 3];
 for (var i = 0, result = []; i < data.length; i++) {
@@ -176,31 +453,37 @@ return result;
 // functional
 return [0, 1, 2, 3].map(i => i * i);
 
-```
+        </code></pre>
 
-</script></section>
+    </section>
+</section>
+
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
-## Anwendungsbereiche (10 min)
+<section>
+<h2>Anwendungsbereiche (10 min)</h2>
 
- - Frontend (nur kurz anschneiden)
- - Backend (Fokus)
+    <ul>
+        <li>Frontend (nur kurz anschneiden)</li>
+        <li>Backend (Fokus)</li>
+    </ul>
+</section>
 
-</script></section>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section data-markdown><script type="text/template">
+<section>
 
-## Einfache Beispiele (10-15 min)
+    <h2>Einfache Beispiele (10-15 min)</h2>
 
- - Listen, Baeume
- - Promises
- - evtl. Event Sourcing
- 
-</script></section>
+    <ul>
+        <li>Listen, Baeume</li>
+        <li>Promises</li>
+        <li>evtl. Event Sourcing</li>
+    </ul>
+</section>
 
 			</div>
 
