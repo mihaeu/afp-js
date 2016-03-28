@@ -186,7 +186,7 @@ document.body.innerHTML = greeter.greet();
 <section>
     <h2>Sprachgrundlagen & Eigenschaften</h2>
     <pre><code data-trim class="js">
-var schlafEin = function(anzahlSchafe) {
+var schlafEin = (anzahlSchafe) => {
   var i = 0, ausgabe = [];
   for (i = anzahlSchafe; i > 0; --i) {
     if (i === 1) {
@@ -355,7 +355,7 @@ function Snake(name, isPoisonous) {
     this.isPoisonous = isPoisonous;
 }
 
-Snake.prototype = Object.create(Person.prototype);
+Snake.prototype = Object.create(Animal.prototype);
 Snake.prototype.constructor = Snake;
 Snake.prototype.move = function () {
     return this.name + " wiggles " + meters + "m.";
@@ -378,7 +378,7 @@ class Animal {
         this.name = name;
     }
     move() {
-        return return this.name + " moved " + meters + "m.";
+        return this.name + " moved " + meters + "m.";
     }
 }
 
@@ -402,8 +402,11 @@ class Snake extends Animal {
 
         <ul>
             <li>Funktionen waren schon immer ein first-class-citizen</li>
+            <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
             <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber oft untypische Implementierungen)</li>
             <li class="fragment">seit ES6 Tail Recursion!</li>
+            <li class="fragment">viele Seiteneffekte</li>
+            <li class="fragment">kein Currying</li>
         </ul>
     </section>
 
@@ -417,7 +420,7 @@ class Snake extends Animal {
 
         <pre><code data-trim class="js">
 // imperative
-data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (var i = 0, result = []; i < data.length; i++) {
   if (data[i] % 2 === 0) {
     result.push(data[i]);
@@ -456,8 +459,38 @@ return [0, 1, 2, 3].map(i => i * i);
         </code></pre>
 
     </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+
+        <h4>Höhere Funktionen in JavaScript: reduce()</h4>
+
+        <pre><code data-trim class="js">
+// imperative
+let sum = 0;
+for (const i of [1, 2, 3, 4]) {   // neues immutable for seit ES6
+  sum += i;
+}
+return sum;
+
+
+// functional
+return [1, 2, 3, 4].reduce((i, j) => i + j);
+
+        </code></pre>
+
+    </section>
 </section>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Funktionale Konzepte</h2>
+
+</section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -465,9 +498,11 @@ return [0, 1, 2, 3].map(i => i * i);
 <section>
 <h2>Anwendungsbereiche (10 min)</h2>
 
+    <h4>Sind damit Anwendungsbereiche der funktionalen Programmierung oder der Sprache gemeint?</h4>
     <ul>
         <li>Frontend (nur kurz anschneiden)</li>
         <li>Backend (Fokus)</li>
+        <li>evtl. Event Sourcing</li>
     </ul>
 </section>
 
@@ -479,9 +514,39 @@ return [0, 1, 2, 3].map(i => i * i);
     <h2>Einfache Beispiele (10-15 min)</h2>
 
     <ul>
-        <li>Listen, Baeume</li>
+        <li>Listen</li>
         <li>Promises</li>
-        <li>evtl. Event Sourcing</li>
+    </ul>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Quellen</h2>
+
+    <h3>Bücher</h3>
+    <ul>
+        <li>
+            <a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript - The Good Parts</a> von
+            Douglas Crockford
+        </li>
+        <li>
+            <a href="http://exploringjs.com/es6/">Exploring ES6</a> von
+            Dr. Axel Rauschmayer
+        </li>
+        <li>
+            <a href="http://currybuch.de/">Das Curry-Buch - Funktional programmieren lernen mit JavaScript</a> von
+            Stefanie Schirmer,
+            Hannes Mehnert,
+            Jens Ohlig
+        </li>
+    </ul>
+
+    <h3>Blogs</h3>
+    <ul>
+        <li><a href="http://odetocode.com/">Ode to Code</a></li>
+        <li><a href="http://www.2ality.com/">②ality – JavaScript and more</a></li>
     </ul>
 </section>
 

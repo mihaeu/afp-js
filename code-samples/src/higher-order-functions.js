@@ -2,7 +2,7 @@ module.exports = {
 
   imperativeFilter() {
     // @sample start: filter-imperative
-    data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     for (var i = 0, result = []; i < data.length; i++) {
       if (data[i] % 2 === 0) {
         result.push(data[i]);
@@ -32,6 +32,22 @@ module.exports = {
     // @sample start: map-functional
     return [0, 1, 2, 3].map(i => i * i);
     // @sample end: map-functional
-  }
+  },
 
+  imperativeReduce() {
+    'use strict';
+    // @sample start: reduce-imperative
+    let sum = 0;
+    for (const i of [1, 2, 3, 4]) {   // neues immutable for seit ES6
+      sum += i;
+    }
+    return sum;
+    // @sample end: reduce-imperative
+  },
+
+  functionalReduce() {
+    // @sample start: reduce-functional
+    return [1, 2, 3, 4].reduce((i, j) => i + j);
+    // @sample end: reduce-functional
+  }
 };
