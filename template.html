@@ -70,7 +70,7 @@
     <!--<img src="https://img.shields.io/github/license/mihaeu/afp-js.svg" alt="License">-->
     <!--<img src="https://img.shields.io/badge/node-5.9.1-brightgreen.svg" alt="Node v5.9.1">-->
     <br>
-    <img src="https://octodex.github.com/images/Professortocat_v2.png" alt="Professortocat" width="200">
+    <img src="img/Professortocat_v2.png" alt="Professortocat" width="200">
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -133,7 +133,7 @@
         </p>
     </section>
     <section>
-        <img src="http://www.gwtproject.org/assets/build/img/navLogoBig.png" alt="Google GWT">
+        <img src="img/navLogoBig.png" alt="Google GWT">
         <pre><code data-trim class="java">
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
@@ -146,7 +146,7 @@ public class HelloWorld implements EntryPoint {
         </code></pre>
     </section>
     <section>
-        <img src="http://coffeescript.org/documentation/images/logo.png" alt="CoffeeScript">
+        <img src="img/logo.png" alt="CoffeeScript">
         <p>Python + Ruby + Haskell = ♥</p>
         <pre><code data-trim class="coffeescript">
 # Conditions:
@@ -409,7 +409,7 @@ class Snake extends Animal {
         <ul>
             <li>Funktionen waren schon immer ein first-class-citizen</li>
             <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
-            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber oft untypische Implementierungen)</li>
+            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber teils untypische Implementierungen)</li>
             <li class="fragment">seit ES6 Tail Recursion!</li>
             <li class="fragment">viele Seiteneffekte</li>
             <li class="fragment">kein Currying</li>
@@ -474,22 +474,159 @@ class Snake extends Animal {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <h2>Funktionale Konzepte</h2>
+    <h2>Anwendungsbereiche</h2>
+    <ul>
+        <li>JavaScript läuft auf einem einzigen Thread*</li>
+        <li>daher keine Möglichkeit zur Parallelisierung</li>
+        <li>aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
+    </ul>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <small class="center">
+        im Browser wird Code manchmal auf anderen Threads ausgeführt
+    </small>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-<h2>Anwendungsbereiche (10 min)</h2>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Anwendungsbereiche</h2>
+        <h4>Kurzer Ausflug: Node Architektur</h4>
+        <img src="img/io-cost.png" alt="Cost of IO">
 
-    <h4>Sind damit Anwendungsbereiche der funktionalen Programmierung oder der Sprache gemeint?</h4>
-    <ul>
-        <li>Frontend (nur kurz anschneiden)</li>
-        <li>Backend (Fokus)</li>
-        <li>evtl. Event Sourcing</li>
-    </ul>
+        <aside class="notes">
+            <ul>
+                <li>Forks & Threads teuer</li>
+                <li>oft Probleme</li>
+                <li>synchron zu langsam</li>
+            </ul>
+        </aside>
+    </section>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <section>
+        <h2>Anwendungsbereiche</h2>
+        <h4>Kurzer Ausflug: Node Architektur</h4>
+
+        <h4>The cost of IO</h4>
+        <table>
+            <tr>
+                <td>L1-Cache</td>
+                <td>3 cycles</td>
+            </tr>
+            <tr>
+                <td>L2-Cache</td>
+                <td>14 cycles</td>
+            </tr>
+            <tr>
+                <td>RAM</td>
+                <td>250 cycles</td>
+            </tr>
+            <tr>
+                <td>Disk</td>
+                <td>41 000 000 cycles</td>
+            </tr>
+            <tr>
+                <td>Network</td>
+                <td>240 000 000 cycles</td>
+            </tr>
+        </table>
+
+        <aside class="notes">
+            <ul>
+                <li>Forks & Threads teuer</li>
+                <li>oft Probleme</li>
+                <li>synchron zu langsam</li>
+            </ul>
+        </aside>
+    </section>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Anwendungsbereiche:</h2>
+    <h4>Event Driven Programming</h4>
+
+    <p>
+        <strong>Idee:</strong> Langsame externe Events asynchron verarbeiten
+        und weitermachen bis das Ergebnis kommt
+    </p>
+    <br>
+    <p>
+        <strong>Ergebnis:</strong> Je nach Anwendungsbereich sehr hoher Durchsatz
+    </p>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Anwendungsbereiche:</h2>
+    <h4>Event Driven Programming</h4>
+
+    <pre><code class="js">
+fs.readFile('config.js',
+    // some time passes...
+    function(error, buffer) {
+        // the result now pops into existence
+        http.get(options, function(resp){
+            resp.on('data', function(chunk){
+                //do something with chunk
+            });
+        }).on("error", function(e){
+            console.log("Got error: " + e.message);
+        });
+    }
+);
+    </code></pre>
+    <strong class="fragment">⚡ Callback Hell </strong>
+    <strong class="fragment">⚡ Mehr imperativ als funktional ⚡</strong>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Anwendungsbereiche:</h2>
+    <h4>Event Driven Programming</h4>
+
+    <strong>Lösung: Futures/Promises (vgl. Continuation Monad)</strong>
+    <pre><code class="js">
+fs.promisifiedReadFile('config.js')
+    .then(fetchSomethingFromWeb)
+    .then(processThatData)
+    .then(saveItToTheDatabase)
+    .catch(function(error) { console.log(error); });
+    </code></pre>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Anwendungsbereiche:</h2>
+    <h4>Event Driven Programming mit Promises</h4>
+
+    <strong>Viele Implementierungen auch mit, fold, forEach, map etc.</strong>
+    <pre><code class="js">
+fs.promisifiedReadDir('/home/user/workspace')
+    .map(fs.promisifiedReadFile)
+    .reduce((total, content) => total += content.length, 0)
+    .then(result => console.log(result))
+    .catch(error => console.log(error));
+    </code></pre>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -497,12 +634,14 @@ class Snake extends Animal {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
 
-    <h2>Einfache Beispiele (10-15 min)</h2>
+    <h2>Beispiele: Live Coding</h2>
 
     <ul>
-        <li>Listen</li>
-        <li>Promises</li>
+        <li>Currying</li>
+        <li>Funktionen höherer Ordnung</li>
     </ul>
+    <br>
+    <img src="img/deckfailcat.png" width="400" alt="Deckfailcat">
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -534,6 +673,37 @@ class Snake extends Animal {
         <li><a href="http://odetocode.com/">Ode to Code</a></li>
         <li><a href="http://www.2ality.com/">②ality – JavaScript and more</a></li>
     </ul>
+</section>
+
+<section>
+    <h3>Sonstige Quellen & interessante Links</h3>
+
+    <!--<div style="overflow: scroll;height:400px;">-->
+    <div>
+        <ul>
+            <li>
+                <a href="http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop">
+                    Cost of IO
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.jcoglan.com/2013/03/30/callbacks-are-imperative-promises-are-functional-nodes-biggest-missed-opportunity">
+                    Callbacks are imperative, Promises are functional
+                </a>
+            </li>
+            <li>
+                <a href="https://curiosity-driven.org/monads-in-javascript">
+                    Monads in JavaScript
+                </a>
+            </li>
+            <li>
+                <a href="https://blog.jcoglan.com/2011/03/11/promises-are-the-monad-of-asynchronous-programming/">
+                    Promises are the monad of asynchronous programming
+                </a>
+            </li>
+        </ul>
+    </div>
+
 </section>
 
 			</div>
