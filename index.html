@@ -40,7 +40,7 @@
         <style>
             ul.agenda {
                 list-style: none outside none;
-                padding-left: 20px;
+                padding-left: 40px;
                 text-indent: 2px;
             }
 
@@ -83,11 +83,31 @@
             }
 
             span.bolt {
-                font-size: 2em;color:orange;vertical-align: middle;
+                font-size: 2em;
+                color:orange;
+                vertical-align: middle;
             }
 
             span.heart {
-                font-size: 2em;color:red;vertical-align: middle;
+                font-size: 2em;
+                color:red;
+                vertical-align: middle;
+            }
+
+            #header {
+                position: absolute;
+                top: 10px;
+                font-size: 0.5em;
+                text-align: center;
+                width: 100%;
+            }
+
+            #footer {
+                position: absolute;
+                bottom: 15px;
+                font-size: 0.5em;
+                text-align: center;
+                width: 100%;
             }
         </style>
 	</head>
@@ -98,9 +118,14 @@
 		<div class="reveal">
 
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div id="header"></div>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~~~~~~~~~ -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-            <div style="position: absolute;bottom: 15px;font-size: 0.5em;text-align: center;width: 100%;">
+            <div id="footer">
                 <p>
                     <img src="img/logo.png" alt="functional js logo">
                     Funktionale Programmierung mit Javascript - FH Rosenheim - AfP SS 2016 -
@@ -116,7 +141,7 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h1>Funktionale Programmierung mit JavaScript</h1>
-    <div style="font-size: 3em;">λ</div>
+    <div style="font-size: 3em;">&lambda;</div>
     <span style="display: inline-block;width: 200px;text-align: right;">1. April:</span> <span style="display: inline-block;width: 400px;font-weight: bold;">Michael Häuslmann</span>
     <br>
     <span style="display: inline-block;width: 200px;text-align: right;">15. April:</span> <span style="display: inline-block;width: 400px;">Marinus Noichl</span>
@@ -144,13 +169,18 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Agenda</h2>
-    <ul>
-        <li>Geschichte & Herkunft</li>
-        <li>Sprachgrundlagen & Eigenschaften</li>
-        <li>Funktionale Konzepte</li>
-        <li>Anwendungsbereiche</li>
-        <li>Beispiele</li>
+    <ul class="agenda">
+        <li> Geschichte & Herkunft</li>
+        <li> Sprachgrundlagen & Eigenschaften</li>
+        <li> Funktionale Konzepte</li>
+        <li> Anwendungsbereiche</li>
+        <li> Beispiele</li>
     </ul>
+    <p>
+        <small>
+            Dauer: ~45min (exkl. Fragen)
+        </small>
+    </p>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -930,21 +960,21 @@ fs.promisifiedReadDir('/home/user/workspace')
 				controls: true,
 				progress: true,
 				history: true,
-				center: true,
+				center: false,
 
 				transition: 'none', // none/fade/slide/convex/concave/zoom
 
-                multiplex: {
-                    // Example values. To generate your own, see the socket.io server instructions.
-                    secret: null, // null so the clients do not have control of the master presentation
-                    id: 'ef0f974ee67e94c6', // id, obtained from socket.io server
-                    url: '78.47.124.92:1948' // Location of socket.io server
-                },
+//                multiplex: {
+//                    // Example values. To generate your own, see the socket.io server instructions.
+//                    secret: null, // null so the clients do not have control of the master presentation
+//                    id: 'ef0f974ee67e94c6', // id, obtained from socket.io server
+//                    url: '78.47.124.92:1948' // Location of socket.io server
+//                },
 
                 // Optional reveal.js plugins
                 dependencies: [
-                    { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
-                    { src: 'plugin/multiplex/client.js', async: true },
+//                    { src: '//cdn.socket.io/socket.io-1.3.5.js', async: true },
+//                    { src: 'plugin/multiplex/client.js', async: true },
 
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
