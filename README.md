@@ -1,7 +1,6 @@
 # Funktionale Programmierung in JavaScript
 [![Gitter](https://img.shields.io/gitter/room/mihaeu/afp-js.svg)]()
-[![Travis branch](https://img.shields.io/travis/mihaeu/afp-js.svg)]()
-[![GitHub license](https://img.shields.io/github/license/mihaeu/afp-js.svg)]()
+[![Travis branch](img/afp-js.svg)]()
 [![NodeJS version](https://img.shields.io/badge/node-5.9.1-brightgreen.svg)]()
 
 Präsentation ist erstmal mit reveal.js umgesetzt worden: http://mihaeu.github.io/afp-js
