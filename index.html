@@ -218,24 +218,27 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <section>
-        <h2>Geschichte & Herkunft</h2>
+    <h2>Geschichte & Herkunft</h2>
 
-        <ul>
-            <li>1995 von Netscape entwickelt (in 10 Tagen) für deren Browser</li>
-            <li class="fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
-            <li class="fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
-            <li class="fragment">aktueller Standard ES6 der von den meisten modernen Browsern zum Teil implementiert wird</li>
-            <li class="fragment">viele Cross-Compiler und Super-Sets (GWT, TypeScript, Dart, Coffeescript, ...)</li>
-        </ul>
+    <ul>
+        <li>1995 von Netscape entwickelt (in 10 Tagen) für deren Browser</li>
+        <li class="fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
+        <li class="fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
+        <li class="fragment">aktueller Standard ES6 der von den meisten modernen Browsern zum Teil implementiert wird</li>
+        <li class="fragment">viele Cross-Compiler und Super-Sets (GWT, TypeScript, Dart, Coffeescript, ...)</li>
+    </ul>
 
-        <p>
-            <small>(es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
-        </p>
-    </section>
-    <section>
-        <img src="img/navLogoBig.png" alt="Google GWT">
-        <pre><code data-trim class="java">
+    <p>
+        <small>(es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
+    </p>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <img src="img/navLogoBig.png" alt="Google GWT">
+    <pre><code data-trim class="java">
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
 
@@ -244,12 +247,16 @@ public class HelloWorld implements EntryPoint {
         Window.alert("Hello, World!");
     }
 }
-        </code></pre>
-    </section>
-    <section>
-        <img src="img/logo.png" alt="CoffeeScript">
-        <p>Python + Ruby + Haskell = <span class="heart">♥</span></p>
-        <pre><code data-trim class="coffeescript">
+    </code></pre>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <img src="img/logo.png" alt="CoffeeScript">
+    <p>Python + Ruby + Haskell = <span class="heart">♥</span></p>
+    <pre><code data-trim class="coffeescript">
 # Conditions:
 number = -42 if opposite
 
@@ -262,11 +269,15 @@ print winner, runners
 
 # Array comprehensions:
 cubes = (math.cube num for num in list)
-        </code></pre>
-    </section>
-    <section>
-        <h2>TypeScript</h2>
-        <pre><code data-trim class="typescript">
+    </code></pre>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>TypeScript</h2>
+    <pre><code data-trim class="typescript">
 class Greeter {
     constructor(public greeting: string) { }
 
@@ -278,8 +289,7 @@ class Greeter {
 var greeter = new Greeter("Hello, world!");
 
 document.body.innerHTML = greeter.greet();
-        </code></pre>
-    </section>
+    </code></pre>
 </section>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -391,40 +401,36 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Sprachgrundlagen & Eigenschaften</h2>
-        <ul>
-            <li>Interpretiert</li>
-            <li class="fragment">Dynamische Typisierung</li>
-            <li class="fragment">Coercion</li>
-            <li class="fragment">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
-            <li class="fragment">Prototyp orientiert</li>
-        </ul>
-    </section>
+    <h2>Sprachgrundlagen & Eigenschaften</h2>
+    <ul>
+        <li>Interpretiert</li>
+        <li class="fragment">Dynamische Typisierung</li>
+        <li class="fragment">Coercion</li>
+        <li class="fragment">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
+        <li class="fragment">Prototyp orientiert</li>
+    </ul>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Dynamische Typisierung</h2>
-        <span class="bolt">⚡</span> Typ ist zur Compilezeit noch nicht bekannt <span class="bolt">⚡</span>
-        <pre><code data-trim class="js">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Dynamische Typisierung</h2>
+    <span class="bolt">⚡</span> Typ ist zur Compilezeit noch nicht bekannt <span class="bolt">⚡</span>
+    <pre><code data-trim class="js">
 let x;        // undefined
 x = 1;        // number
 x = true;     // boolean
 x = 'true';   // string
-        </code></pre>
-    </section>
+    </code></pre>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Coercion</h2>
-        <pre><code data-trim data-noescape class="js">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Coercion</h2>
+    <pre><code data-trim data-noescape class="js">
 0 == ''           <span class="fragment">// true</span>
 
 <span class="fragment">0 == '0'</span>          <span class="fragment">// true</span>
@@ -437,18 +443,18 @@ x = 'true';   // string
 <span class="fragment">false == '0'</span>      <span class="fragment">// true</span>
 
 <span class="fragment">" \t\r\n " == 0</span>   <span class="fragment">// true</span>
-        </code></pre>
-        <p class="fragment">
-            <span class="bolt">⚡</span> Typumwandlungen z.B. bei == != + ... <span class="bolt">⚡</span>
-        </p>
-    </section>
+    </code></pre>
+    <p class="fragment">
+        <span class="bolt">⚡</span> Typumwandlungen z.B. bei == != + ... <span class="bolt">⚡</span>
+    </p>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     <section>
-        <h2>Lexikalisches Scoping auf Funktionsebene</h2>
-        <pre><code data-trim data-noescape class="js">
+    <h2>Lexikalisches Scoping auf Funktionsebene</h2>
+    <pre><code data-trim data-noescape class="js">
 var x = 3;
 function func(randomize) {
     var x;                  <span class="fragment">// geht nur da functional scope</span>
@@ -459,19 +465,19 @@ function func(randomize) {
     return x;
 }
 func(false);                <span class="fragment">// undefined</span>
-        </code></pre>
-    </section>
+    </code></pre>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Prototyp orientiert</h2>
-        <ul>
-            <li>Keine Klassen, Methoden, Konstruktoren, Module (zumindest vor ES6)</li>
-            <li>Aber alles über Prototypen möglich</li>
-        </ul>
-        <pre><code data-trim data-noescape class="js">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Prototyp orientiert</h2>
+    <ul>
+        <li>Keine Klassen, Methoden, Konstruktoren, Module (zumindest vor ES6)</li>
+        <li>Aber alles über Prototypen möglich</li>
+    </ul>
+    <pre><code data-trim data-noescape class="js">
 var Animal = (function() {
     function Animal(name) {
         this.name = name;
@@ -483,16 +489,16 @@ var Animal = (function() {
 
     return Animal;
 })();
-        </code></pre>
-    </section>
+    </code></pre>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Prototyp orientiert</h2>
-        Inheritance :(
-        <pre><code data-trim data-noescape class="js">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Prototyp orientiert</h2>
+    Inheritance :(
+    <pre><code data-trim data-noescape class="js">
 function Snake(name, isPoisonous) {
     Animal.call(this, name); // super(name)
     this.isPoisonous = isPoisonous;
@@ -503,19 +509,19 @@ Snake.prototype.constructor = Snake;
 Snake.prototype.move = function () {
     return this.name + " wiggles " + meters + "m.";
 };
-        </code></pre>
-    </section>
+    </code></pre>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Prototyp orientiert</h2>
-        <h3>(under the hood)</h3>
-        <ul>
-            Seit ES6 viel syntaktischer Zucker:
-        </ul>
-        <pre><code data-trim data-noescape class="js">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Prototyp orientiert</h2>
+    <h3>(under the hood)</h3>
+    <ul>
+        Seit ES6 viel syntaktischer Zucker:
+    </ul>
+    <pre><code data-trim data-noescape class="js">
 class Animal {
     constructor(name) {
         this.name = name;
@@ -528,9 +534,7 @@ class Animal {
 class Snake extends Animal {
     // ...
 }
-        </code></pre>
-    </section>
-
+    </code></pre>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -559,36 +563,32 @@ class Snake extends Animal {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Funktionale Konzepte</h2>
+    <h2>Funktionale Konzepte</h2>
 
-        <h4>The good <span class="heart">♥</span></h4>
-        <ul>
-            <li>Funktionen waren schon immer ein first-class-citizen</li>
-            <li class="fragment">seit ES6 Tail Recursion!</li>
-            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber teils untypische Implementierungen)</li>
-        </ul>
+    <h4>The good <span class="heart">♥</span></h4>
+    <ul>
+        <li>Funktionen waren schon immer ein first-class-citizen</li>
+        <li class="fragment">seit ES6 Tail Recursion!</li>
+        <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber teils untypische Implementierungen)</li>
+    </ul>
 
-        <h4 class="fragment">The bad <span class="bolt">⚡</span></h4>
-        <ul>
-            <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
-            <li class="fragment">viele Seiteneffekte</li>
-            <li class="fragment">kein Currying</li>
-        </ul>
-    </section>
+    <h4 class="fragment">The bad <span class="bolt">⚡</span></h4>
+    <ul>
+        <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
+        <li class="fragment">viele Seiteneffekte</li>
+        <li class="fragment">kein Currying</li>
+    </ul>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h4>Höhere Funktionen in JavaScript: filter()</h4>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h4>Höhere Funktionen in JavaScript: filter()</h4>
 
-        Welcher Ansatz ist einfacher zu verstehen und hat weniger mögliche Fehlerquellen?
+    Welcher Ansatz ist einfacher zu verstehen und hat weniger mögliche Fehlerquellen?
 
-        <pre><code data-trim class="js">
+    <pre><code data-trim class="js">
 // imperative
 var data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 for (var i = 0, result = []; i < data.length; i++) {
@@ -602,19 +602,19 @@ return result;
 // functional
 return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter(i => i % 2 === 0);
 
-        </code></pre>
-    </section>
+    </code></pre>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
 
-        <h4>Höhere Funktionen in JavaScript: map()</h4>
+    <h4>Höhere Funktionen in JavaScript: map()</h4>
 
-        Was mache ich, wenn ich eine ähnliche Funktion wie z.B. die Quadratwurzel brauche?
+    Was mache ich, wenn ich eine ähnliche Funktion wie z.B. die Quadratwurzel brauche?
 
-        <pre><code data-trim class="js">
+    <pre><code data-trim class="js">
 // imperative
 data = [0, 1, 2, 3];
 for (var i = 0, result = []; i < data.length; i++) {
@@ -626,18 +626,18 @@ return result;
 // functional
 return [0, 1, 2, 3].map(i => i * i);
 
-        </code></pre>
+    </code></pre>
 
-    </section>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
 
-        <h4>Höhere Funktionen in JavaScript: reduce()</h4>
+    <h4>Höhere Funktionen in JavaScript: reduce()</h4>
 
-        <pre><code data-trim class="js">
+    <pre><code data-trim class="js">
 // imperative
 let sum = 0;
 for (const i of [1, 2, 3, 4]) {   // neues immutable for seit ES6
@@ -649,9 +649,8 @@ return sum;
 // functional
 return [1, 2, 3, 4].reduce((i, j) => i + j);
 
-        </code></pre>
+    </code></pre>
 
-    </section>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -700,62 +699,57 @@ return [1, 2, 3, 4].reduce((i, j) => i + j);
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Anwendungsbereiche</h2>
-        <h4>Kurzer Ausflug: Node Architektur</h4>
-        <img src="img/io-cost.png" alt="Cost of IO">
+    <h2>Anwendungsbereiche</h2>
+    <h4>Kurzer Ausflug: Node Architektur</h4>
+    <img src="img/io-cost.png" alt="Cost of IO">
 
-        <aside class="notes">
-            <ul>
-                <li>Forks & Threads teuer</li>
-                <li>oft Probleme</li>
-                <li>synchron zu langsam</li>
-            </ul>
-        </aside>
-    </section>
+    <aside class="notes">
+        <ul>
+            <li>Forks & Threads teuer</li>
+            <li>oft Probleme</li>
+            <li>synchron zu langsam</li>
+        </ul>
+    </aside>
+</section>
 
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~ VERTCIAL SLIDE ~~~~~~~~~~~~~~~~~~~ -->
-    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-    <section>
-        <h2>Anwendungsbereiche</h2>
-        <h4>Kurzer Ausflug: Node Architektur</h4>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Anwendungsbereiche</h2>
+    <h4>Kurzer Ausflug: Node Architektur</h4>
 
-        <h4>The cost of IO</h4>
-        <table>
-            <tr>
-                <td>L1-Cache</td>
-                <td>3 cycles</td>
-            </tr>
-            <tr>
-                <td>L2-Cache</td>
-                <td>14 cycles</td>
-            </tr>
-            <tr>
-                <td>RAM</td>
-                <td>250 cycles</td>
-            </tr>
-            <tr>
-                <td>Disk</td>
-                <td>41 000 000 cycles</td>
-            </tr>
-            <tr>
-                <td>Network</td>
-                <td>240 000 000 cycles</td>
-            </tr>
-        </table>
+    <h4>The cost of IO</h4>
+    <table>
+        <tr>
+            <td>L1-Cache</td>
+            <td>3 cycles</td>
+        </tr>
+        <tr>
+            <td>L2-Cache</td>
+            <td>14 cycles</td>
+        </tr>
+        <tr>
+            <td>RAM</td>
+            <td>250 cycles</td>
+        </tr>
+        <tr>
+            <td>Disk</td>
+            <td>41 000 000 cycles</td>
+        </tr>
+        <tr>
+            <td>Network</td>
+            <td>240 000 000 cycles</td>
+        </tr>
+    </table>
 
-        <aside class="notes">
-            <ul>
-                <li>Forks & Threads teuer</li>
-                <li>oft Probleme</li>
-                <li>synchron zu langsam</li>
-            </ul>
-        </aside>
-    </section>
+    <aside class="notes">
+        <ul>
+            <li>Forks & Threads teuer</li>
+            <li>oft Probleme</li>
+            <li>synchron zu langsam</li>
+        </ul>
+    </aside>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
