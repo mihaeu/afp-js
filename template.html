@@ -46,6 +46,11 @@
 
             .agenda li:before {
                 content: '☐';
+                padding-right: 20px;
+            }
+
+            .agenda ul li:before {
+                padding-right: 0;
             }
 
             li.inactive:before {
@@ -810,7 +815,7 @@ fs.promisifiedReadDir('/home/user/workspace')
         <li class="summary">
             Anwendungsbereiche
             <ul>
-                <li>single thread problematisch für komplexen Berechnung</li>
+                <li>Single-Thread Architektur problematisch für komplexe Berechnungen</li>
                 <li>Event-basierte Programmierung gut mit funktionaler Programmierung kombinierbar</li>
             </ul>
         </li>
