@@ -404,7 +404,7 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
     <h2>Sprachgrundlagen & Eigenschaften</h2>
     <ul>
         <li>Interpretiert</li>
-        <li class="fragment">Dynamische Typisierung</li>
+        <li class="fragment">Schwache dynamische Typisierung</li>
         <li class="fragment">Coercion</li>
         <li class="fragment">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
         <li class="fragment">Prototyp orientiert</li>
@@ -415,14 +415,26 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <h2>Dynamische Typisierung</h2>
-    <span class="bolt">⚡</span> Typ ist zur Compilezeit noch nicht bekannt <span class="bolt">⚡</span>
+    <h2>Schwache dynamische Typisierung</h2>
     <pre><code data-trim class="js">
-let x;        // undefined
-x = 1;        // number
-x = true;     // boolean
-x = 'true';   // string
+// dynamisch typisiert, keine Initialisierung notwendig
+let organization = 'Microsoft';
+
+// ⚡ neue Variable durch Schreibfehler ⚡
+organisation = 'Google';
     </code></pre>
+
+    <pre class="fragment"><code data-trim class="js">
+// schwach typisiert
+let x = 1;                          // number
+
+x = true;                           // boolean
+
+x = 'true';                         // string
+    </code></pre>
+    <p class="fragment">
+        <span class="bolt">⚡</span> Abgesehen für kleine Skripte fast nur Nachteile <span class="bolt">⚡</span>
+    </p>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -547,7 +559,7 @@ class Snake extends Animal {
         <li class="summary">
             Sprachgrundlagen & Eigenschaften
             <ul>
-                <li>interpretiert & dynamisch typisiert</li>
+                <li>interpretiert & schwach dynamisch typisiert</li>
                 <li>Prototyp-orientiert</li>
                 <li>viele Fallen</li>
                 <li>knappe Schreibweise</li>
@@ -937,6 +949,11 @@ fs.promisifiedReadDir('/home/user/workspace')
             <li>
                 <a href="https://www.pluralsight.com/courses/javascript-good-parts">
                     JavaScript the Good Parts (Online Video Kurs)
+                </a>
+            </li>
+            <li>
+                <a href="https://gist.github.com/non/ec48b0a7343db8291b92">
+                    What is the appeal of dynamically-typed languages?
                 </a>
             </li>
         </ul>
