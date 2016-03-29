@@ -5,9 +5,9 @@ module.exports = {
       var i = 0, ausgabe = [];
       for (i = anzahlSchafe; i > 0; --i) {
         if (i === 1) {
-          ausgabe.push(1 + ' Schaf');
+          ausgabe.push(1 + " Schaf");
         } else {
-          ausgabe.push(i + ' Schafe');
+          ausgabe.push(i + " Schafe");
         }
       }
       return ausgabe.join("\n") + "\nZzzz ...";

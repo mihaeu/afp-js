@@ -37,8 +37,48 @@
 		<![endif]-->
 
         <style>
+            ul.agenda {
+                list-style: none outside none;
+                padding-left: 20px;
+                text-indent: 2px;
+            }
+
+            .agenda li:before {
+                content: '☐';
+            }
+
             li.inactive {
                 color: lightgrey;
+            }
+
+            li.summary:before {
+                content: '☑';
+            }
+
+            li.next {
+                font-weight: bold;
+            }
+
+            li.summary {
+                font-style: italic;
+                color: #4d4d4d;
+            }
+
+            .agenda .summary ul {
+                padding-left: 40px;
+                text-indent: 2px;
+            }
+
+            .agenda .summary li:before {
+                content: '';
+            }
+
+            span.bolt {
+                font-size: 2em;color:orange;vertical-align: middle;
+            }
+
+            span.heart {
+                font-size: 2em;color:red;vertical-align: middle;
             }
         </style>
 	</head>
@@ -49,8 +89,8 @@
 		<div class="reveal">
             <div style="position: absolute;bottom: 15px;font-size: 0.5em;text-align: center;width: 100%;">
                 <p>
-                    Funktionale Programmierung mit Javascript - AfP SS 2016 -
-                    Michael Haeuslmann &amp; Marinus Noichl
+                    Funktionale Programmierung mit Javascript - FH Rosenheim - AfP SS 2016 -
+                    <strong>Michael Haeuslmann</strong> &amp; Marinus Noichl
                 </p>
             </div>
 
@@ -62,10 +102,9 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h1>Funktionale Programmierung mit JavaScript</h1>
-    <ul>
-        <li>Teil 1: Michael Häuslmann</li>
-        <li>Teil 2: Marinus Noichl</li>
-    </ul>
+    <strong>1. April: Michael Häuslmann</strong>
+    <br>
+    15. April: Marinus Noichl
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -159,7 +198,7 @@ public class HelloWorld implements EntryPoint {
     </section>
     <section>
         <img src="img/logo.png" alt="CoffeeScript">
-        <p>Python + Ruby + Haskell = ♥</p>
+        <p>Python + Ruby + Haskell = <span class="heart">♥</span></p>
         <pre><code data-trim class="coffeescript">
 # Conditions:
 number = -42 if opposite
@@ -215,9 +254,16 @@ document.body.innerHTML = greeter.greet();
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Agenda</h2>
-    <ul>
-        <li class="inactive">Geschichte & Herkunft</li>
-        <li>Sprachgrundlagen & Eigenschaften</li>
+    <ul class="agenda">
+        <li class="summary">
+            Geschichte & Herkunft
+            <ul>
+                <li>kommt aus dem Web</li>
+                <li>viele Altlasten</li>
+                <li>sehr aktive und beliebt</li>
+            </ul>
+        </li>
+        <li class="next">Sprachgrundlagen & Eigenschaften</li>
         <li class="inactive">Funktionale Konzepte</li>
         <li class="inactive">Anwendungsbereiche</li>
         <li class="inactive">Beispiele</li>
@@ -240,6 +286,7 @@ document.body.innerHTML = greeter.greet();
 <section>
     <h2>Sprachgrundlagen & Eigenschaften</h2>
     <h3>Datenstrukturen</h3>
+    <strong class="fragment">Intern sind das alles Objekte (auch Funktionen selbst)!</strong>
     <pre><code data-trim class="js">
 // boolean
 true
@@ -252,7 +299,7 @@ false
 // string
 'Hello'
 
-// regex (eigentl. object)
+// regex
 /java[sS]cript/
     </code></pre>
 </section>
@@ -301,7 +348,7 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
     <section>
         <h2>Dynamische Typisierung</h2>
-        ⚡ Typ ist zur Compilezeit noch nicht bekannt ⚡
+        <span class="bolt">⚡</span> Typ ist zur Compilezeit noch nicht bekannt <span class="bolt">⚡</span>
         <pre><code data-trim class="js">
 let x;        // undefined
 x = 1;        // number
@@ -329,7 +376,9 @@ x = 'true';   // string
 
 <span class="fragment">" \t\r\n " == 0</span>   <span class="fragment">// true</span>
         </code></pre>
-        <p class="fragment">⚡ Typumwandlungen z.B. bei == != + ... ⚡</p>
+        <p class="fragment">
+            <span class="bolt">⚡</span> Typumwandlungen z.B. bei == != + ... <span class="bolt">⚡</span>
+        </p>
     </section>
 
     <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -427,10 +476,18 @@ class Snake extends Animal {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Agenda</h2>
-    <ul>
+    <ul class="agenda">
         <li class="inactive">Geschichte & Herkunft</li>
-        <li class="inactive">Sprachgrundlagen & Eigenschaften</li>
-        <li>Funktionale Konzepte</li>
+        <li class="summary">
+            Sprachgrundlagen & Eigenschaften
+            <ul>
+                <li>interpretiert & dynamisch typisiert</li>
+                <li>Prototyp-orientiert</li>
+                <li>viele Fallen</li>
+                <li>knappe Schreibweise</li>
+            </ul>
+        </li>
+        <li class="next">Funktionale Konzepte</li>
         <li class="inactive">Anwendungsbereiche</li>
         <li class="inactive">Beispiele</li>
     </ul>
@@ -446,11 +503,16 @@ class Snake extends Animal {
     <section>
         <h2>Funktionale Konzepte</h2>
 
+        <h4>The good <span class="heart">♥</span></h4>
         <ul>
             <li>Funktionen waren schon immer ein first-class-citizen</li>
-            <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
-            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber teils untypische Implementierungen)</li>
             <li class="fragment">seit ES6 Tail Recursion!</li>
+            <li class="fragment">eingebaute Funktionen höherer Ordnung: filter, reduce, map (aber teils untypische Implementierungen)</li>
+        </ul>
+
+        <h4 class="fragment">The bad <span class="bolt">⚡</span></h4>
+        <ul>
+            <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
             <li class="fragment">viele Seiteneffekte</li>
             <li class="fragment">kein Currying</li>
         </ul>
@@ -515,11 +577,18 @@ class Snake extends Animal {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Agenda</h2>
-    <ul>
+    <ul class="agenda">
         <li class="inactive">Geschichte & Herkunft</li>
         <li class="inactive">Sprachgrundlagen & Eigenschaften</li>
-        <li class="inactive">Funktionale Konzepte</li>
-        <li>Anwendungsbereiche</li>
+        <li class="summary">
+            Funktionale Konzepte
+            <ul>
+                <li>funktionale Programmierung möglich</li>
+                <li>viel Handarbeit oder Erweiterungen nötig</li>
+                <li>Performanz an manchen Stellen problematisch</li>
+            </ul>
+        </li>
+        <li class="next">Anwendungsbereiche</li>
         <li class="inactive">Beispiele</li>
     </ul>
 </section>
@@ -530,9 +599,10 @@ class Snake extends Animal {
 <section>
     <h2>Anwendungsbereiche</h2>
     <ul>
-        <li>JavaScript läuft auf einem einzigen Thread*</li>
-        <li>daher keine Möglichkeit zur Parallelisierung</li>
-        <li>aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
+        <li>Web, Mobile, Chromeapps: Templating, APIs, DOM, DB Operationen, ...</li>
+        <li class="fragment">JavaScript läuft auf einem einzigen Thread <sup>*</sup></li>
+        <li class="fragment">daher keine Möglichkeit zur Parallelisierung</li>
+        <li class="fragment">aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
     </ul>
 
     <br>
@@ -540,7 +610,7 @@ class Snake extends Animal {
     <br>
     <br>
     <small class="center">
-        im Browser wird Code manchmal auf anderen Threads ausgeführt
+        <sup>*</sup> im Browser wird Code manchmal auf anderen Threads ausgeführt
     </small>
 </section>
 
@@ -619,7 +689,7 @@ class Snake extends Animal {
     </p>
     <br>
     <p>
-        <strong>Ergebnis:</strong> Je nach Anwendungsbereich sehr hoher Durchsatz
+        <strong class="fragment">Ergebnis:</strong> Je nach Anwendungsbereich sehr hoher Durchsatz
     </p>
 </section>
 
@@ -645,8 +715,8 @@ fs.readFile('config.js',
     }
 );
     </code></pre>
-    <strong class="fragment">⚡ Callback Hell </strong>
-    <strong class="fragment">⚡ Mehr imperativ als funktional ⚡</strong>
+    <strong class="fragment"><span class="bolt">⚡</span> Callback Hell </strong>
+    <strong class="fragment"><span class="bolt">⚡</span> Mehr imperativ als funktional <span class="bolt">⚡</span></strong>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -656,7 +726,7 @@ fs.readFile('config.js',
     <h2>Anwendungsbereiche:</h2>
     <h4>Event Driven Programming</h4>
 
-    <strong>Lösung: Futures/Promises (vgl. Continuation Monad)</strong>
+    <strong>Lösung: Futures/Promises (Continuation Monad)</strong>
     <pre><code class="js">
 fs.promisifiedReadFile('config.js')
     .then(fetchSomethingFromWeb)
@@ -688,12 +758,18 @@ fs.promisifiedReadDir('/home/user/workspace')
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Agenda</h2>
-    <ul>
+    <ul class="agenda">
         <li class="inactive">Geschichte & Herkunft</li>
         <li class="inactive">Sprachgrundlagen & Eigenschaften</li>
         <li class="inactive">Funktionale Konzepte</li>
-        <li class="inactive">Anwendungsbereiche</li>
-        <li>Beispiele</li>
+        <li class="summary">
+            Anwendungsbereiche
+            <ul>
+                <li>single thread problematisch für komplexen Berechnung</li>
+                <li>Event-basierte Programmierung gut mit funktionaler Programmierung kombinierbar</li>
+            </ul>
+        </li>
+        <li class="next">Beispiele</li>
     </ul>
 </section>
 
@@ -710,6 +786,19 @@ fs.promisifiedReadDir('/home/user/workspace')
     </ul>
     <br>
     <img src="img/deckfailcat.png" width="400" alt="Deckfailcat">
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <h2>Zusammenfassung</h2>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
