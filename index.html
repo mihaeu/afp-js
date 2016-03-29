@@ -47,12 +47,20 @@
                 content: '☐';
             }
 
-            li.inactive {
-                color: lightgrey;
+            li.inactive:before {
+                content: '☐';
             }
 
             li.summary:before {
                 content: '☑';
+            }
+
+            li.done:before {
+                content: '☑';
+            }
+
+            li.inactive, li.done {
+                color: lightgrey;
             }
 
             li.next {
@@ -87,8 +95,13 @@
 
 
 		<div class="reveal">
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~~~~~~~~~ -->
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <div style="position: absolute;bottom: 15px;font-size: 0.5em;text-align: center;width: 100%;">
                 <p>
+                    <img src="img/logo.png" alt="functional js logo">
                     Funktionale Programmierung mit Javascript - FH Rosenheim - AfP SS 2016 -
                     <strong>Michael Haeuslmann</strong> &amp; Marinus Noichl
                 </p>
@@ -102,6 +115,7 @@
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h1>Funktionale Programmierung mit JavaScript</h1>
+    <div style="font-size: 3em;">λ</div>
     <span style="display: inline-block;width: 200px;text-align: right;">1. April:</span> <span style="display: inline-block;width: 400px;font-weight: bold;">Michael Häuslmann</span>
     <br>
     <span style="display: inline-block;width: 200px;text-align: right;">15. April:</span> <span style="display: inline-block;width: 400px;">Marinus Noichl</span>
@@ -489,7 +503,7 @@ class Snake extends Animal {
 <section>
     <h2>Agenda</h2>
     <ul class="agenda">
-        <li class="inactive">Geschichte & Herkunft</li>
+        <li class="done">Geschichte & Herkunft</li>
         <li class="summary">
             Sprachgrundlagen & Eigenschaften
             <ul>
@@ -610,8 +624,8 @@ return [1, 2, 3, 4].reduce((i, j) => i + j);
 <section>
     <h2>Agenda</h2>
     <ul class="agenda">
-        <li class="inactive">Geschichte & Herkunft</li>
-        <li class="inactive">Sprachgrundlagen & Eigenschaften</li>
+        <li class="done">Geschichte & Herkunft</li>
+        <li class="done">Sprachgrundlagen & Eigenschaften</li>
         <li class="summary">
             Funktionale Konzepte
             <ul>
@@ -791,9 +805,9 @@ fs.promisifiedReadDir('/home/user/workspace')
 <section>
     <h2>Agenda</h2>
     <ul class="agenda">
-        <li class="inactive">Geschichte & Herkunft</li>
-        <li class="inactive">Sprachgrundlagen & Eigenschaften</li>
-        <li class="inactive">Funktionale Konzepte</li>
+        <li class="done">Geschichte & Herkunft</li>
+        <li class="done">Sprachgrundlagen & Eigenschaften</li>
+        <li class="done">Funktionale Konzepte</li>
         <li class="summary">
             Anwendungsbereiche
             <ul>
@@ -888,6 +902,11 @@ fs.promisifiedReadDir('/home/user/workspace')
             <li>
                 <a href="https://blog.jcoglan.com/2011/03/11/promises-are-the-monad-of-asynchronous-programming/">
                     Promises are the monad of asynchronous programming
+                </a>
+            </li>
+            <li>
+                <a href="https://www.pluralsight.com/courses/javascript-good-parts">
+                    JavaScript the Good Parts (Online Video Kurs)
                 </a>
             </li>
         </ul>
