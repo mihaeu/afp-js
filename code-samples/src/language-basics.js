@@ -1,3 +1,4 @@
+'use strict';
 module.exports = {
   countSheep() {
     // @sample start: language-basics
@@ -18,7 +19,6 @@ module.exports = {
   },
 
   functionalScoping() {
-    'use strict';
     // @sample start: functional-scoping
     var x = 3;
     function func(randomize) {
@@ -32,6 +32,23 @@ module.exports = {
     func(false);
     // @sample end: functional-scoping
 
-    return func(false);
+    return [func(false), func(true)];
+  },
+
+  typeInference() {
+     return [
+     0 == '',           // true
+
+      0 == '0',         // true
+
+      '' == '0',        // false
+
+
+      false == 'false', // false
+
+      false == '0',     // true
+
+      " \t\r\n " == 0   // true
+    ];
   }
 };

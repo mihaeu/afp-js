@@ -44,6 +44,16 @@
                 text-indent: 2px;
             }
 
+            li.big-space {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            li.little-space {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
             .agenda li:before {
                 content: '☐';
                 padding-right: 20px;
@@ -195,11 +205,11 @@
     <h2>Geschichte & Herkunft</h2>
 
     <br>
-    <p class="fragment">Wer hat bereits Erfahrungen mit JavaScript gemacht?</p>
+    <p class="fragment">Wer ist an der Hochschule bereits mit JavaScript in Berührung gekommen?</p>
     <br>
-    <p class="fragment">Wem macht das Spass?</p>
+    <p class="fragment">Wer arbeitet privat/beruflich mit JavaScript?</p>
     <br>
-    <p class="fragment">Wer meint JavaScript ist eine "schöne" Sprache?</p>
+    <p class="fragment">Wer meint JavaScript ist eine &bdquo;schöne&ldquo; Sprache?</p>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -208,6 +218,7 @@
 <section>
     <h2>Geschichte & Herkunft</h2>
 
+    <br><br>
     <blockquote>
         [...] you have the power to define your own subset. You can write better programs by relying exclusively on the good parts.
         <small>- Douglas Crockford, JavaScript - The Good Parts</small>
@@ -222,14 +233,13 @@
 
     <ul>
         <li>1995 von Netscape entwickelt (in 10 Tagen) für deren Browser</li>
-        <li class="fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
-        <li class="fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
-        <li class="fragment">aktueller Standard ES6 der von den meisten modernen Browsern zum Teil implementiert wird</li>
-        <li class="fragment">viele Cross-Compiler und Super-Sets (GWT, TypeScript, Dart, Coffeescript, ...)</li>
+        <li class="little-space fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
+        <li class="little-space fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
+        <li class="little-space fragment">aktueller Standard ist ES6 und wird von den meisten modernen Browsern zum Teil implementiert wird</li>
+        <li class="little-space fragment">viele Cross-Compiler und Super-Sets <br>(GWT, TypeScript, Dart, Coffeescript, ClojureScript...)</li>
     </ul>
-
-    <p>
-        <small>(es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
+    <p class="fragment">
+        <small>es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
     </p>
 </section>
 
@@ -298,9 +308,10 @@ document.body.innerHTML = greeter.greet();
     <h2>Geschichte & Herkunft</h2>
 
     <ul>
-        <li>Keine (ernsthaften) Alternativen</li>
-        <li class="fragment">früher außschließlich im Frontend, jetzt überall (Backend, Desktop- und Mobileapps)</li>
-        <li class="fragment">unere Meinung: sehr viel Hype, aber auch echte Chancen</li>
+        <li class="big-space">Keine (ernsthaften) Alternativen</li>
+        <li class="big-space fragment">früher außschließlich im Frontend, jetzt <strong>überall</strong> <br>(Backend, Desktop- und Mobileapps)</li>
+        <li class="big-space fragment">NodeJS als Java Umgebung fürs Backend <br>(mit V8 von Google als Runtime)</li>
+        <li class="big-space fragment">unsere Meinung: sehr viel Hype, aber auch echte Chancen</li>
     </ul>
 
     <aside class="notes">
@@ -319,6 +330,7 @@ document.body.innerHTML = greeter.greet();
             Geschichte & Herkunft
             <ul>
                 <li>kommt aus dem Web</li>
+                <li>jetzt überall</li>
                 <li>viele Altlasten</li>
                 <li>sehr aktive und beliebt</li>
             </ul>
@@ -358,8 +370,7 @@ schlafEin(5);
 <section>
     <h2>Sprachgrundlagen & Eigenschaften</h2>
     <h3>Datenstrukturen</h3>
-    <strong class="fragment">Intern sind das alles Objekte (auch Funktionen selbst)!</strong>
-    <pre><code data-trim class="js">
+    <pre><code data-trim data-noescape class="js">
 // boolean
 true
 false
@@ -367,6 +378,7 @@ false
 // number
 1
 3.1415
+<span class="fragment">(3.1415).toString()</span>
 
 // string
 'Hello'
@@ -374,6 +386,7 @@ false
 // regex
 /java[sS]cript/
     </code></pre>
+    <strong class="fragment">Alles ist ein Objekt (auch Funktionen selbst)!</strong>
 </section>
 
 <section>
@@ -403,11 +416,11 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
 <section>
     <h2>Sprachgrundlagen & Eigenschaften</h2>
     <ul>
-        <li>Interpretiert</li>
-        <li class="fragment">Schwache dynamische Typisierung</li>
-        <li class="fragment">Coercion</li>
-        <li class="fragment">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
-        <li class="fragment">Prototyp orientiert</li>
+        <li class="big-space">Interpretiert</li>
+        <li class="fragment big-space">Schwache dynamische Typisierung</li>
+        <li class="fragment big-space">Coercion</li>
+        <li class="fragment big-space">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
+        <li class="fragment big-space">Prototyp orientiert</li>
     </ul>
 </section>
 
@@ -416,20 +429,21 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
     <h2>Schwache dynamische Typisierung</h2>
-    <pre><code data-trim class="js">
+    <pre><code data-trim data-noescape class="js">
+// praktisch: kein List&lt;Integer> list = new ArrayList&lt;Integer>();
+let list = [1, 2, 3, 4, 5];
+<div class="fragment">
 // dynamisch typisiert, keine Initialisierung notwendig
 let organization = 'Microsoft';
 
 // ⚡ neue Variable durch Schreibfehler ⚡
-organisation = 'Google';
+organisation = 'Google';</div>
     </code></pre>
 
     <pre class="fragment"><code data-trim class="js">
 // schwach typisiert
 let x = 1;                          // number
-
 x = true;                           // boolean
-
 x = 'true';                         // string
     </code></pre>
     <p class="fragment">
@@ -491,16 +505,17 @@ func(false);                <span class="fragment">// undefined</span>
     </ul>
     <pre><code data-trim data-noescape class="js">
 var Animal = (function() {
-    function Animal(name) {
-        this.name = name;
-    }
+  function Animal(name) {
+    this.name = name;
+  }
 
-    Animal.prototype.move = function(meters) {
-        return this.name + " moved " + meters + "m.";
-    };
+  Animal.prototype.move = function(meters) {
+    return this.name + " moves " + meters + "m.";
+  };
 
-    return Animal;
+  return Animal;
 })();
+
     </code></pre>
 </section>
 
@@ -512,15 +527,22 @@ var Animal = (function() {
     Inheritance :(
     <pre><code data-trim data-noescape class="js">
 function Snake(name, isPoisonous) {
-    Animal.call(this, name); // super(name)
-    this.isPoisonous = isPoisonous;
+  Animal.call(this, name); // super(name)
+  this.isPoisonous = isPoisonous;
 }
 
-Snake.prototype = Object.create(Animal.prototype);
+Snake.prototype = Object.create(Snake.prototype);
 Snake.prototype.constructor = Snake;
-Snake.prototype.move = function () {
-    return this.name + " wiggles " + meters + "m.";
+Snake.prototype.move = function (meters) {
+  return this.name + " wiggles " + meters + "m.";
 };
+// @sample end:es5-inheritance
+var snake = new Snake('Snake');
+return new Animal("Platypus").move(3) + snake.move(3);
+
+
+6: () => {
+
     </code></pre>
 </section>
 
@@ -535,17 +557,20 @@ Snake.prototype.move = function () {
     </ul>
     <pre><code data-trim data-noescape class="js">
 class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-    move() {
-        return this.name + " moved " + meters + "m.";
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  move(meters) {
+    return this.name + " moves " + meters + "m.";
+  }
 }
 
 class Snake extends Animal {
-    // ...
+  move(meters) {
+    return this.name + " wiggles " + meters + "m."
+  }
 }
+
     </code></pre>
 </section>
 
@@ -588,7 +613,7 @@ class Snake extends Animal {
     <ul>
         <li class="fragment">keine Lazy Evalution (aber es gibt Libraries)</li>
         <li class="fragment">viele Seiteneffekte</li>
-        <li class="fragment">kein Currying</li>
+        <li class="fragment">kein Currying, Pattern Matching, ...</li>
     </ul>
 </section>
 
@@ -692,14 +717,12 @@ return [1, 2, 3, 4].reduce((i, j) => i + j);
 <section>
     <h2>Anwendungsbereiche</h2>
     <ul>
-        <li>Web, Mobile, Chromeapps: Templating, APIs, DOM, DB Operationen, ...</li>
-        <li class="fragment">JavaScript läuft auf einem einzigen Thread <sup>*</sup></li>
-        <li class="fragment">daher keine Möglichkeit zur Parallelisierung</li>
-        <li class="fragment">aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
+        <li class="big-space">Web, Mobile, Chromeapps: Templating, APIs, DOM, DB Operationen, ...</li>
+        <li class="fragment big-space">JavaScript läuft auf einem einzigen Thread <sup>*</sup></li>
+        <li class="fragment big-space">daher keine Möglichkeit zur Parallelisierung</li>
+        <li class="fragment big-space">aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
     </ul>
 
-    <br>
-    <br>
     <br>
     <br>
     <small class="center">
@@ -776,8 +799,8 @@ return [1, 2, 3, 4].reduce((i, j) => i + j);
         und weitermachen bis das Ergebnis kommt
     </p>
     <br>
-    <p>
-        <strong class="fragment">Ergebnis:</strong> Je nach Anwendungsbereich sehr hoher Durchsatz
+    <p class="fragment">
+        <strong>Ergebnis:</strong> Je nach Anwendungsbereich sehr hoher Durchsatz
     </p>
 </section>
 
@@ -882,10 +905,11 @@ fs.promisifiedReadDir('/home/user/workspace')
 <section>
     <h2>Zusammenfassung</h2>
     <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>einfach zu lernen</li>
+        <li>überall zu verwenden</li>
+        <li>sehr viele Altlasten und Probleme in der Sprache</li>
+        <li>funktionale Programmierung führt zu weniger fehlerbehafteten Lösungen</li>
+        <li>aber nicht für rein funktionale Programmierung entworfen</li>
     </ul>
 </section>
 
@@ -954,6 +978,11 @@ fs.promisifiedReadDir('/home/user/workspace')
             <li>
                 <a href="https://gist.github.com/non/ec48b0a7343db8291b92">
                     What is the appeal of dynamically-typed languages?
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/clojure/clojurescript">
+                    ClojureScript
                 </a>
             </li>
         </ul>
