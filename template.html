@@ -19,10 +19,10 @@
 		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 
 		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
 
         <!-- Backup in case projector doesn't handle dark highlighting well -->
-		<!--<link rel="stylesheet" href="lib/css/github-gist.css">-->
+		<link rel="stylesheet" href="lib/css/github-gist.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -264,7 +264,7 @@ public class HelloWorld implements EntryPoint {
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <img src="img/logo.png" alt="CoffeeScript">
+    <img src="img/coffeescript.png" alt="CoffeeScript">
     <p>Python + Ruby + Haskell = <span class="heart">♥</span></p>
     <pre><code data-trim class="coffeescript">
 # Conditions:
@@ -406,7 +406,7 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
     <ul>
         <li class="big-space">Interpretiert</li>
         <li class="fragment big-space">Schwache dynamische Typisierung</li>
-        <li class="fragment big-space">Coercion</li>
+        <li class="fragment big-space">Type Coercion</li>
         <li class="fragment big-space">Lexikalisches Scoping auf <strong>Funktionsebene</strong></li>
         <li class="fragment big-space">Prototyp orientiert</li>
     </ul>
@@ -443,7 +443,7 @@ x = 'true';                         // string
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <h2>Coercion</h2>
+    <h2>Type Coercion</h2>
     <pre><code data-trim data-noescape class="js">
 0 == ''           <span class="fragment">// true</span>
 
@@ -460,6 +460,9 @@ x = 'true';                         // string
     </code></pre>
     <p class="fragment">
         <span class="bolt">⚡</span> Typumwandlungen z.B. bei == != + ... <span class="bolt">⚡</span>
+    </p>
+    <p class="fragment">
+        <span class="heart">♥</span> immer === verwenden! <span class="heart">♥</span>
     </p>
 </section>
 
@@ -480,6 +483,9 @@ function func(randomize) {
 }
 func(false);                <span class="fragment">// undefined</span>
     </code></pre>
+    <p class="fragment">
+        <span class="heart">♥</span> immer let verwenden! <span class="heart">♥</span>
+    </p>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -644,34 +650,12 @@ func(false);                <span class="fragment">// undefined</span>
 <section>
     <h2>Anwendungsbereiche</h2>
     <ul>
-        <li class="big-space">Web, Mobile, Chromeapps: Templating, APIs, DOM, DB Operationen, ...</li>
-        <li class="fragment big-space">JavaScript läuft auf einem einzigen Thread <sup>*</sup></li>
-        <li class="fragment big-space">daher keine Möglichkeit zur Parallelisierung</li>
-        <li class="fragment big-space">aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
+        <li class="little-space">Web Frontend, Server Backend, Mobile- &amp; Desktopapps: <br>Templating, APIs, DOM, DB Operationen, ...</li>
+        <li class="fragment little-space">viele Sachen laufen nebenbei</li>
+        <li class="fragment little-space">JavaScript Umgebungen arbeiten aber mit einem einzigen Thread</li>
+        <li class="fragment little-space">daher keine Möglichkeit zur Parallelisierung</li>
+        <li class="fragment little-space">aber JavaScript Umfeld (Web) und Node Architektur Event-basiert</li>
     </ul>
-
-    <br>
-    <br>
-    <small class="center">
-        <sup>*</sup> im Browser wird Code manchmal auf anderen Threads ausgeführt
-    </small>
-</section>
-
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
-<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<section>
-    <h2>Anwendungsbereiche</h2>
-    <h4>Kurzer Ausflug: Node Architektur</h4>
-    <img src="img/io-cost.png" alt="Cost of IO">
-
-    <aside class="notes">
-        <ul>
-            <li>Forks & Threads teuer</li>
-            <li>oft Probleme</li>
-            <li>synchron zu langsam</li>
-        </ul>
-    </aside>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -738,23 +722,23 @@ func(false);                <span class="fragment">// undefined</span>
     <h2>Anwendungsbereiche:</h2>
     <h4>Event Driven Programming</h4>
 
-    <pre><code class="js">
+    <pre><code data-trim data-noescape class="js">
 fs.readFile('config.js',
     // some time passes...
-    function(error, buffer) {
+    function(error, buffer) {<span class="fragment">
         // the result now pops into existence
-        http.get(options, function(resp){
+        http.get(options, function(resp){<span class="fragment">
             resp.on('data', function(chunk){
                 //do something with chunk
             });
-        }).on("error", function(e){
-            console.log("Got error: " + e.message);
-        });
+        })</span><span class="fragment">.on("error", function(e){
+            console.log("Got error: " + e.message);</span>
+        });</span>
     }
 );
     </code></pre>
     <strong class="fragment"><span class="bolt">⚡</span> Callback Hell </strong>
-    <strong class="fragment"><span class="bolt">⚡</span> Mehr imperativ als funktional <span class="bolt">⚡</span></strong>
+    <strong class="fragment"><span class="bolt">⚡</span> Mehr imperativ als deklarativ <span class="bolt">⚡</span></strong>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -783,7 +767,7 @@ fs.promisifiedReadFile('config.js')
 
     <strong>Viele Implementierungen auch mit, fold, forEach, map etc.</strong>
     <pre><code class="js">
-fs.promisifiedReadDir('/home/user/workspace')
+fs.promisifiedReadDir("/home/user/workspace")
     .map(fs.promisifiedReadFile)
     .reduce((total, content) => total += content.length, 0)
     .then(result => console.log(result))
@@ -819,6 +803,7 @@ fs.promisifiedReadDir('/home/user/workspace')
     <h2>Beispiele: Live Coding</h2>
 
     <ul>
+        <li>Sort</li>
         <li>Currying</li>
         <li>Funktionen höherer Ordnung</li>
     </ul>
@@ -868,7 +853,7 @@ fs.promisifiedReadDir('/home/user/workspace')
             Douglas Crockford
         </li>
         <li>
-            <a href="http://exploringjs.com/es6/">Exploring ES6</a> von
+            <a h`ref="http://exploringjs.com/es6/">Exploring ES6</a> von
             Dr. Axel Rauschmayer
         </li>
         <li>
@@ -929,7 +914,51 @@ fs.promisifiedReadDir('/home/user/workspace')
             </li>
         </ul>
     </div>
+</section>
 
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <pre><code data-trim data-noescape class="js">
+let add = function(a, b) {
+  return a + b;
+} <span class="fragment">
+let add2 = (a, b) => a + b;</span>
+<span class="fragment">
+let map = (fn, xs) => {
+  if (!xs.length) return [];
+  return [fn(xs[0])].concat(map(fn, xs.slice(1)));
+};</span><span class="fragment">
+
+let inc = a => a + 1;</span><span class="fragment">
+map(inc, [0, 1, 2]);</span>
+    </code></pre>
+    <pre><code class="js" data-trim data-noescape>
+<span class="fragment">let applyFn = (fn, x) => (y) => fn(x, y);</span><span class="fragment">
+let inc2 = applyFn(add, 1);</span><span class="fragment">
+
+let curry = (fn, ...args) => fn.length === args.length
+        ? fn(...args)
+        : curry.bind(this, fn, ...args);</span><span class="fragment">
+let inc3 = curry(add)(1);
+</span>
+    </code></pre>
+</section>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
+    <pre><code class="js" data-trim data-noescape>
+let sort = xs => {
+  <span class="fragment">if (xs.length === 0) return [];</span>
+  <span class="fragment">let pivot = xs[0], t = xs.slice(1);</span>
+  <span class="fragment">return sort(t.filter(x => x < pivot))</span>
+    <span class="fragment">.concat(pivot)</span>
+    <span class="fragment">.concat(sort(t.filter(x => x >= pivot)));</span>
+}
+    </code></pre>
 </section>
 
 			</div>
@@ -952,10 +981,10 @@ fs.promisifiedReadDir('/home/user/workspace')
 				transition: 'none', // none/fade/slide/convex/concave/zoom
 
 //                multiplex: {
-//                    // Example values. To generate your own, see the socket.io server instructions.
+//                     Example values. To generate your own, see the socket.io server instructions.
 //                    secret: null, // null so the clients do not have control of the master presentation
-//                    id: 'ef0f974ee67e94c6', // id, obtained from socket.io server
-//                    url: '78.47.124.92:1948' // Location of socket.io server
+//                    id: '82d736089aceba46', // id, obtained from socket.io server
+//                    url: '10.42.0.1:1948' // Location of socket.io server
 //                },
 
                 // Optional reveal.js plugins

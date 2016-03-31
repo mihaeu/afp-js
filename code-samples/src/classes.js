@@ -26,7 +26,7 @@ module.exports = {
     Snake.prototype.move = function (meters) {
       return this.name + " wiggles " + meters + "m.";
     };
-    // @sample end:es5-inheritance
+    // @sample end: es5-inheritance
     var snake = new Snake('Snake');
     return new Animal("Platypus").move(3) + snake.move(3);
   },

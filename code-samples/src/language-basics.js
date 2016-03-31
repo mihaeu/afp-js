@@ -24,7 +24,7 @@ module.exports = {
     function func(randomize) {
       var x;
       if (randomize) {
-        let x = Math.random();
+        var x = Math.random();
         return x;
       }
       return x;
