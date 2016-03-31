@@ -236,11 +236,8 @@
         <li class="little-space fragment">verschiedene Implementierungen u.a. von Microsoft (JScript)</li>
         <li class="little-space fragment">Sprachstandard erst später entstanden (ECMAScript)</li>
         <li class="little-space fragment">aktueller Standard ist ES6 und wird von den meisten modernen Browsern zum Teil implementiert wird</li>
-        <li class="little-space fragment">viele Cross-Compiler und Super-Sets <br>(GWT, TypeScript, Dart, Coffeescript, ClojureScript...)</li>
+        <li class="little-space fragment">viele Runtime Engines, Cross-Compiler und Super-Sets <br>(GWT, TypeScript, Dart, Coffeescript, ClojureScript...)</li>
     </ul>
-    <p class="fragment">
-        <small>es gibt bereits ES2016/ES7, aber hier nicht relevant)</small>
-    </p>
 </section>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -286,7 +283,7 @@ cubes = (math.cube num for num in list)
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
-    <h2>TypeScript</h2>
+    <img src="img/TypeScript_Logo.png" alt="TypeScript">
     <pre><code data-trim class="typescript">
 class Greeter {
     constructor(public greeting: string) { }
@@ -310,7 +307,7 @@ document.body.innerHTML = greeter.greet();
     <ul>
         <li class="big-space">Keine (ernsthaften) Alternativen</li>
         <li class="big-space fragment">früher außschließlich im Frontend, jetzt <strong>überall</strong> <br>(Backend, Desktop- und Mobileapps)</li>
-        <li class="big-space fragment">NodeJS als Java Umgebung fürs Backend <br>(mit V8 von Google als Runtime)</li>
+        <li class="big-space fragment"><img src="img/nodejs.png" alt="NodeJS" height="30" style="vertical-align: text-bottom;"> als Java Umgebung fürs Backend <br>(mit V8 von Google als Runtime)</li>
         <li class="big-space fragment">unsere Meinung: sehr viel Hype, aber auch echte Chancen</li>
     </ul>
 
@@ -432,12 +429,12 @@ let set = new Set([1, 1, 1, 2]); // Set { 1, 2 }
     <pre><code data-trim data-noescape class="js">
 // praktisch: kein List&lt;Integer> list = new ArrayList&lt;Integer>();
 let list = [1, 2, 3, 4, 5];
-<div class="fragment">
+<span class="fragment">
 // dynamisch typisiert, keine Initialisierung notwendig
 let organization = 'Microsoft';
 
 // ⚡ neue Variable durch Schreibfehler ⚡
-organisation = 'Google';</div>
+organisation = 'Google';</span>
     </code></pre>
 
     <pre class="fragment"><code data-trim class="js">
@@ -786,6 +783,14 @@ return [1, 2, 3, 4].reduce((i, j) => i + j);
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <section>
+    <h2>Event Loop</h2>
+    <img src="img/event-loop.png" alt="Event Loop">
+</section>
+                
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ SLIDE ~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section>
     <h2>Anwendungsbereiche:</h2>
     <h4>Event Driven Programming</h4>
 
@@ -920,7 +925,7 @@ fs.promisifiedReadDir("/home/user/workspace")
             Douglas Crockford
         </li>
         <li>
-            <a h`ref="http://exploringjs.com/es6/">Exploring ES6</a> von
+            <a href="http://exploringjs.com/es6/">Exploring ES6</a> von
             Dr. Axel Rauschmayer
         </li>
         <li>
