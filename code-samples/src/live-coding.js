@@ -1,19 +1,17 @@
 
-let add = (a, b) => a + b;
-console.log(add(1, 2));
 
-let inc = a => a + 1;
-console.log(inc(inc(1)));
 
-let map = (fn, xs) => {
-  if (!xs.length) return [];
-  return [fn(xs[0])].concat(map(fn, xs.slice(1)));
-};
-let map2 = (fn, xs) => !xs.length ? [] : [fn(xs[0])].concat(map(fn, xs.slice(1)));
-console.log(map(inc, [1, 2, 3]));
-console.log(map2(inc, [1, 2, 3]));
 
-let applyFn = (fn, x) => y => fn(x, y);
+
+
+
+
+
+
+
+
+
+
 
 
 
